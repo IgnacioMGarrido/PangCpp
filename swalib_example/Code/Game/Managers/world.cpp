@@ -39,7 +39,7 @@ void cWorld::AddBallComponents(const float fMaxVelSpeed, const float fRadius, cE
     pEnt->AddComponent<cCollisionComp &>(*pCollComp);
 
     // Insert render component.
-    cRenderComp *pRenderComp = new cRenderComp("data/tyrian_ball.png", vmake(fRadius * 6.0f, fRadius * 6.0f));
+    cRenderComp *pRenderComp = new cRenderComp("data/ball128.png", vmake(fRadius * 6.0f, fRadius * 6.0f));
     assert(pRenderComp != nullptr);
     pEnt->AddComponent<cRenderComp &>(*pRenderComp);
 }
@@ -59,13 +59,37 @@ void cWorld::Init()
 	for (size_t i = 0; i < m_bMaxBalls; i++) {
 		cEntity *pEnt = new cEntity();
 		assert(pEnt != nullptr);
-
 		AddBallComponents(fMaxVelSpeed, fRadius, pEnt);
-
 		// Insert entity.
 		m_Entities.push_back(pEnt);
-
 		// Activation.
+		pEnt->Activate();
+	}
+
+	for(size_t i = 0; i < m_bMaxPlayers; ++i)
+	{
+		cEntity* pEnt = new cEntity();
+		assert(pEnt != nullptr);
+
+		// Insert movement component.
+		cLinearVelComp* pVelComp = new cLinearVelComp();
+		assert(pVelComp != nullptr);
+		pVelComp->SetPos(vmake(SCR_WIDTH / 2, 50));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
+		pVelComp->SetVel(vmake(0, 0));
+		pEnt->AddComponent<cLinearVelComp&>(*pVelComp);
+
+		// Insert collision component.
+		cCollisionComp* pCollComp = new cCollisionComp(fRadius * 3.0f);
+		assert(pCollComp != nullptr);
+		pEnt->AddComponent<cCollisionComp&>(*pCollComp);
+
+		// Insert render component.
+		cRenderComp* pRenderComp = new cRenderComp("data/pang_player.png", vmake(fRadius * 15.0f, fRadius * 15.0f));
+		assert(pRenderComp != nullptr);
+		pEnt->AddComponent<cRenderComp&>(*pRenderComp);
+
+
+		m_Entities.push_back(pEnt);
 		pEnt->Activate();
 	}
 }
