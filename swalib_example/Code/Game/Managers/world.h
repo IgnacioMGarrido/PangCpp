@@ -13,7 +13,7 @@ public:
 	typedef std::vector<cEntity *>	tEntities;	// Typedef array of entities.
 
 private:
-	static const size_t m_bMaxEntities = 10;	// Max. num balls.
+	static const size_t m_bMaxBalls = 4;	// Max. num balls.
 
 	tEntities m_Entities;	// Vector of entities.
 	cBackground	*m_pBackground;	// Backgroung game.
@@ -33,8 +33,9 @@ public:
 
 private:
 	cWorld();
+    void AddBallComponents(float fMaxVelSpeed, float fRadius, cEntity* pEnt);
 
-	void EntitySlot(double fTimeDiff);
+    void EntitySlot(double fTimeDiff);
 };
 
 #endif // !_WORLD_H_
