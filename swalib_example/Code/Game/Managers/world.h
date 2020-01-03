@@ -34,7 +34,6 @@ public:
 
 private:
 	cWorld();
-    void AddBallComponents(float fMaxVelSpeed, float fRadius, cEntity* pEnt);
 
     void EntitySlot(double fTimeDiff);
 };

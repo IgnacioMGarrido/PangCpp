@@ -92,6 +92,9 @@
     <ClCompile Include="..\Code\Game\Entities\EntityTypes\player_entity.cpp">
       <Filter>Source Files\Game\Entities\EntityTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\ball_entity.cpp">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -164,6 +167,9 @@
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\player_entity.h">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\ball_entity.h">
       <Filter>Source Files\Game\Entities\EntityTypes</Filter>
     </ClInclude>
   </ItemGroup>

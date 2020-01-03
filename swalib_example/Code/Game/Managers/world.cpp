@@ -4,6 +4,7 @@
 #include "../../../../common/sys.h"
 #include "../../../../common/font.h"
 #include "../Entities/EntityTypes/player_entity.h"
+#include "../Entities/EntityTypes/ball_entity.h"
 #include "../Entities/Entity.h"
 #include "../Entities/Components/linear_vel_comp.h"
 #include "../Entities/Components/collision_comp.h"
@@ -29,26 +30,6 @@ cWorld::cWorld() : m_Entities(m_bMaxBalls)
 	m_Entities.clear();
 }
 
-void cWorld::AddBallComponents(const float fMaxVelSpeed, const float fRadius, cEntity* pEnt)
-{
-    // Insert movement component.
-    cLinearVelComp *pVelComp = new cLinearVelComp();
-    assert(pVelComp != nullptr);
-	pVelComp->SetPos(vmake(SCR_WIDTH / 2, SCR_HEIGHT));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
-	pVelComp->SetVel(vmake(CORE_FRand(-fMaxVelSpeed, +fMaxVelSpeed), CORE_FRand(-fMaxVelSpeed, +fMaxVelSpeed)));
-    pEnt->AddComponent<cLinearVelComp &>(*pVelComp);
-
-    // Insert collision component.
-    cCollisionComp *pCollComp = new cCollisionComp(fRadius * 3.0f);
-    assert(pCollComp != nullptr);
-    pEnt->AddComponent<cCollisionComp &>(*pCollComp);
-
-    // Insert render component.
-    cRenderComp *pRenderComp = new cRenderComp("data/ball128.png", vmake(fRadius * 6.0f, fRadius * 6.0f));
-    assert(pRenderComp != nullptr);
-    pEnt->AddComponent<cRenderComp &>(*pRenderComp);
-}
-
 void cWorld::Init()
 {
 	// Background creation.
@@ -59,19 +40,15 @@ void cWorld::Init()
 
 	// Init game state
 	// Add balls
-	const float fMaxVelSpeed = 8.0f * 60.0f;	// Max vel. of ball. (pixels/sec.). 8 pixels x 60 slot executions per second.
-	const float fRadius = 16.0F;
 	for (size_t i = 0; i < m_bMaxBalls; i++) {
-		cEntity *pEnt = new cEntity();
+		cEntity *pEnt = new cEBall("data/ball128.png",16.0f);
 		assert(pEnt != nullptr);
-		AddBallComponents(fMaxVelSpeed, fRadius, pEnt);
 		// Insert entity.
 		m_Entities.push_back(pEnt);
 		// Activation.
 		pEnt->Activate();
 	}
-
-	float fMaxPlayerVel = 8.0 * 60.0f;
+	//Add Player.
 	for(size_t i = 0; i < m_bMaxPlayers; ++i)
 	{
 		cEntity* pEnt = new cEPlayer("data/pang_player.png",16.0f);
