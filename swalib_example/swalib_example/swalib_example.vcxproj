@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\common\sys_win.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\collision_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\input_comp.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\Components\life_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\linear_vel_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\render_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\entity.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="..\Code\Game\Entities\Components\collision_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\component.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\input_comp.h" />
+    <ClInclude Include="..\Code\Game\Entities\Components\life_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\linear_vel_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\render_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\entity.h" />

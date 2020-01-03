@@ -83,6 +83,9 @@
     <ClCompile Include="..\Code\Game\Entities\Components\input_comp.cpp">
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\Components\life_comp.cpp">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -150,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\Messages\shoot_msg.h">
       <Filter>Source Files\Game\Entities\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Components\life_comp.h">
+      <Filter>Source Files\Game\Entities\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

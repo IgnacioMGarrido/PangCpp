@@ -11,8 +11,9 @@
 #include "graphics_engine.h"
 #include <assert.h>
 #include "../Entities/Components/input_comp.h"
+#include "../Entities/Components/life_comp.h"
 
-class cInputComp;
+
 
 cWorld& cWorld::GetInstance()
 {
@@ -95,6 +96,10 @@ void cWorld::Init()
 		cInputComp* pInputComp = new cInputComp();
 		assert(pInputComp != nullptr);
 		pEnt->AddComponent<cInputComp&>(*pInputComp);
+
+		cLifeComp* pLifeComp = new cLifeComp();
+		assert(pLifeComp != nullptr);
+		pEnt->AddComponent<cLifeComp&>(*pLifeComp);
 
 		m_Entities.push_back(pEnt);
 		pEnt->Activate();
