@@ -13,7 +13,7 @@ private:
 public:
 	cEntity()
 	{}
-	~cEntity();
+	virtual ~cEntity();
 
 	// Entity activation when it's running first time.
 	void Activate();

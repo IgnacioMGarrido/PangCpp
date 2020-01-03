@@ -3,6 +3,7 @@
 #include "../../../../common/core.h"
 #include "../../../../common/sys.h"
 #include "../../../../common/font.h"
+#include "../Entities/EntityTypes/player_entity.h"
 #include "../Entities/Entity.h"
 #include "../Entities/Components/linear_vel_comp.h"
 #include "../Entities/Components/collision_comp.h"
@@ -73,33 +74,8 @@ void cWorld::Init()
 	float fMaxPlayerVel = 8.0 * 60.0f;
 	for(size_t i = 0; i < m_bMaxPlayers; ++i)
 	{
-		cEntity* pEnt = new cEntity();
+		cEntity* pEnt = new cEPlayer("data/pang_player.png",16.0f);
 		assert(pEnt != nullptr);
-
-		// Insert movement component.
-		cLinearVelComp* pVelComp = new cLinearVelComp();
-		assert(pVelComp != nullptr);
-		pVelComp->SetPos(vmake(SCR_WIDTH / 2, 50));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
-		pVelComp->SetInitialVel(vmake(fMaxPlayerVel, 0));
-		pEnt->AddComponent<cLinearVelComp&>(*pVelComp);
-
-		// Insert collision component.
-		cCollisionComp* pCollComp = new cCollisionComp(fRadius * 3.0f);
-		assert(pCollComp != nullptr);
-		pEnt->AddComponent<cCollisionComp&>(*pCollComp);
-
-		// Insert render component.
-		cRenderComp* pRenderComp = new cRenderComp("data/pang_player.png", vmake(fRadius * 15.0f, fRadius * 15.0f));
-		assert(pRenderComp != nullptr);
-		pEnt->AddComponent<cRenderComp&>(*pRenderComp);
-
-		cInputComp* pInputComp = new cInputComp();
-		assert(pInputComp != nullptr);
-		pEnt->AddComponent<cInputComp&>(*pInputComp);
-
-		cLifeComp* pLifeComp = new cLifeComp();
-		assert(pLifeComp != nullptr);
-		pEnt->AddComponent<cLifeComp&>(*pLifeComp);
 
 		m_Entities.push_back(pEnt);
 		pEnt->Activate();
