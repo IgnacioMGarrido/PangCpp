@@ -1,5 +1,5 @@
-#ifndef _NEW_POS_MSG_H_
-#define _NEW_POS_MSG_H_
+#ifndef _DIR_CHANGE_MSG_H_
+#define _DIR_CHANGE_MSG_H_
 
 #include "message.h"
 

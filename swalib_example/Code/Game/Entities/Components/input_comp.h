@@ -5,9 +5,9 @@
 
 class cInputComp : public cComponent
 {
+public:
     cInputComp() {};
     ~cInputComp(){}
-public:
     virtual void Slot(double fTimeDiff) override;
    //virtual void ReceiveMsg(const cMessage& message) override;
 

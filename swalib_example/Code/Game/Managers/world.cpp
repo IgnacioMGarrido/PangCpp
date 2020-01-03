@@ -10,6 +10,9 @@
 #include "../Graphics/background.h"
 #include "graphics_engine.h"
 #include <assert.h>
+#include "../Entities/Components/input_comp.h"
+
+class cInputComp;
 
 cWorld& cWorld::GetInstance()
 {
@@ -66,6 +69,7 @@ void cWorld::Init()
 		pEnt->Activate();
 	}
 
+	float fMaxPlayerVel = 8.0 * 60.0f;
 	for(size_t i = 0; i < m_bMaxPlayers; ++i)
 	{
 		cEntity* pEnt = new cEntity();
@@ -75,7 +79,7 @@ void cWorld::Init()
 		cLinearVelComp* pVelComp = new cLinearVelComp();
 		assert(pVelComp != nullptr);
 		pVelComp->SetPos(vmake(SCR_WIDTH / 2, 50));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
-		pVelComp->SetVel(vmake(0, 0));
+		pVelComp->SetInitialVel(vmake(fMaxPlayerVel, 0));
 		pEnt->AddComponent<cLinearVelComp&>(*pVelComp);
 
 		// Insert collision component.
@@ -88,6 +92,9 @@ void cWorld::Init()
 		assert(pRenderComp != nullptr);
 		pEnt->AddComponent<cRenderComp&>(*pRenderComp);
 
+		cInputComp* pInputComp = new cInputComp();
+		assert(pInputComp != nullptr);
+		pEnt->AddComponent<cInputComp&>(*pInputComp);
 
 		m_Entities.push_back(pEnt);
 		pEnt->Activate();

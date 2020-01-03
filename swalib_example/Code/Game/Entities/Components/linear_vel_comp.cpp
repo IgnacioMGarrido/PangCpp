@@ -5,6 +5,8 @@
 #include <assert.h>
 #include "../Messages/new_pos_msg.h"
 #include "../Messages/collision_msg.h"
+#include "../Messages/dir_change_msg.h"
+#include "../Messages/shoot_msg.h"
 
 cLinearVelComp::cLinearVelComp() : m_vPos(vmake(0, 0))
 , m_vVel(vmake(0, 0))
@@ -45,10 +47,13 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
         return;
     }
 
+
     // Collision with limit world.
     const cLimitWorldCollMsg* pLimitMsg = dynamic_cast<const cLimitWorldCollMsg*>(&message);
     if (pLimitMsg != nullptr) {
         __int8 uLimit = pLimitMsg->GetTypeLimitWorldColl();
+
+
         if ((uLimit & cLimitWorldCollMsg::eType::LIMIT_X_NEG) ||
             (uLimit & cLimitWorldCollMsg::eType::LIMIT_X_POS)) {
             m_vVel.x *= -1.0f;
@@ -59,4 +64,12 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
         }
         return;
     }
+
+    const cDirChangeMessage* pDirChangeMsg = dynamic_cast<const cDirChangeMessage*>(&message);
+    if(pDirChangeMsg != nullptr)
+    {
+        m_vVel.x = m_vInitialVel.x * pDirChangeMsg->GetDir();
+        m_vVel.y = 0;
+    }
+
 }
