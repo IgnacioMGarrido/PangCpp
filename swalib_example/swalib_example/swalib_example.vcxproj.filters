@@ -80,6 +80,9 @@
     <ClCompile Include="..\Code\Game\Entities\Components\render_comp.cpp">
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\Components\input_comp.cpp">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -137,6 +140,15 @@
       <Filter>Source Files\Game\Entities\Messages</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\Messages\collision_msg.h">
+      <Filter>Source Files\Game\Entities\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Components\input_comp.h">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Messages\dir_change_msg.h">
+      <Filter>Source Files\Game\Entities\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Messages\shoot_msg.h">
       <Filter>Source Files\Game\Entities\Messages</Filter>
     </ClInclude>
   </ItemGroup>
