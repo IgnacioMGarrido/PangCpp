@@ -18,6 +18,8 @@ public:
 	{};
 
 	virtual void ReceiveMsg(const cMessage &message) override;
+
+
 };
 
 #endif // !_RENDER_COMP_H_

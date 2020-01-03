@@ -132,6 +132,9 @@
     <ClCompile Include="..\Code\Game\Entities\Components\linear_vel_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\render_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\entity.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\ball_entity.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\bullet_entity.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\player_entity.cpp" />
     <ClCompile Include="..\Code\Game\Global\timer.cpp" />
     <ClCompile Include="..\Code\Game\Graphics\background.cpp" />
     <ClCompile Include="..\Code\Game\Graphics\sprite.cpp" />
@@ -151,6 +154,9 @@
     <ClInclude Include="..\Code\Game\Entities\Components\linear_vel_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\render_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\entity.h" />
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\ball_entity.h" />
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\bullet_entity.h" />
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\player_entity.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\collision_msg.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\dir_change_msg.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\message.h" />

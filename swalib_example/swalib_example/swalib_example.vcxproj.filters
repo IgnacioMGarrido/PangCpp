@@ -33,6 +33,9 @@
     <Filter Include="Source Files\Game\Entities\Messages">
       <UniqueIdentifier>{9433f959-d732-4afd-839d-8849e35e2112}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Entities\EntityTypes">
+      <UniqueIdentifier>{deb5f966-49f4-4a96-8657-8b50b557122a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -85,6 +88,15 @@
     </ClCompile>
     <ClCompile Include="..\Code\Game\Entities\Components\life_comp.cpp">
       <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\player_entity.cpp">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\ball_entity.cpp">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\bullet_entity.cpp">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +168,15 @@
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\Components\life_comp.h">
       <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\player_entity.h">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\ball_entity.h">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\bullet_entity.h">
+      <Filter>Source Files\Game\Entities\EntityTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

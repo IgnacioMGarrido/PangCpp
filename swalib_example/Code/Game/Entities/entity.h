@@ -9,11 +9,11 @@ class cMessage;
 class cEntity {
 private:
 	std::vector<cComponent*>	m_Components;	// Component list.
-
+	bool m_bIsActive;
 public:
-	cEntity()
+	cEntity() : m_bIsActive(false)
 	{}
-	~cEntity();
+	virtual ~cEntity();
 
 	// Entity activation when it's running first time.
 	void Activate();
@@ -45,6 +45,8 @@ public:
 		}
 		return nullptr;
 	}
+
+	inline bool GetIsActive() const { return m_bIsActive; }
 };
 
 #endif // !_ENTITY_H_
