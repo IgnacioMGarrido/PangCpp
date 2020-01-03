@@ -5,8 +5,10 @@
 
 class cInputComp : public cComponent
 {
+private:
+    bool m_bKeyPressed;
 public:
-    cInputComp() {};
+    cInputComp() : m_bKeyPressed(false) {};
     ~cInputComp(){}
     virtual void Slot(double fTimeDiff) override;
    //virtual void ReceiveMsg(const cMessage& message) override;

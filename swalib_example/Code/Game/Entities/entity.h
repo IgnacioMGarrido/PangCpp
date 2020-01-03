@@ -9,9 +9,9 @@ class cMessage;
 class cEntity {
 private:
 	std::vector<cComponent*>	m_Components;	// Component list.
-
+	bool m_bIsActive;
 public:
-	cEntity()
+	cEntity() : m_bIsActive(false)
 	{}
 	virtual ~cEntity();
 
@@ -45,6 +45,8 @@ public:
 		}
 		return nullptr;
 	}
+
+	inline bool GetIsActive() const { return m_bIsActive; }
 };
 
 #endif // !_ENTITY_H_

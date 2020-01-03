@@ -15,6 +15,7 @@ public:
 private:
 	static const size_t m_bMaxBalls = 3;	// Max. num balls.
 	static const size_t m_bMaxPlayers = 1;
+	static const size_t m_bMaxBullets = 10;
 
 	tEntities m_Entities;	// Vector of entities.
 	cBackground	*m_pBackground;	// Backgroung game.
