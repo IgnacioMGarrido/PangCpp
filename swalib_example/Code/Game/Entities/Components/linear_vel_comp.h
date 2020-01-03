@@ -11,6 +11,10 @@ class cLinearVelComp : public cComponent
 private:
 	vec2	m_vPos;	// Position. Coord. window.
 	vec2	m_vVel;	// Velocity.
+	vec2	m_vInitialVel;
+
+	bool bCanMoveRight = true;
+	bool bCanMoveLeft = true;
 
 public:
 	cLinearVelComp();
@@ -20,6 +24,8 @@ public:
 	inline void SetPos(const vec2& vPos) { m_vPos = vPos; }
 	inline const vec2 &GetVel() const { return m_vVel; }
 	inline void SetVel(const vec2& vVel) { m_vVel = vVel; }
+	inline const vec2& GetInitialVel() const { return m_vInitialVel; }
+	inline void SetInitialVel(const vec2& vVel) { m_vInitialVel = vVel; }
 
 	virtual void ReceiveMsg(const cMessage &message) override;
 };
