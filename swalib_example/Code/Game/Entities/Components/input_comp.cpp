@@ -10,15 +10,16 @@
 #include <vector>
 #include <windows.h>
 #include <assert.h>
+#include "../../../../../common/sys.h"
 
 void cInputComp::Slot(double fTimeDiff)
 {
-    if (GetAsyncKeyState('A') & 0x8000)
+    if (SYS_KeyPressed('A'))//GetAsyncKeyState('A') & 0x8000)
     {
         cDirChangeMessage msg(-1);
         GetOwner()->SendMsg(msg);
     }
-    else if (GetAsyncKeyState('D') & 0x8000)
+    else if (SYS_KeyPressed('D'))
     {
         cDirChangeMessage msg(1);
         GetOwner()->SendMsg(msg);
@@ -29,7 +30,7 @@ void cInputComp::Slot(double fTimeDiff)
         GetOwner()->SendMsg(msg);
     }
 
-    if(GetKeyState(VK_SPACE) & 0x8000)
+    if(SYS_KeyPressed(VK_SPACE))
     {
         cShootMessage msg(true);
         GetOwner()->SendMsg(msg);
