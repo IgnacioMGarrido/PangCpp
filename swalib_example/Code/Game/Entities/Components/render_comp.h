@@ -14,6 +14,9 @@ public:
 	cRenderComp(const char *sFileName, const vec2 &vSize);
 	~cRenderComp();
 
+	virtual void Activate() override;
+	virtual void Deactivate() override;
+
 	void Slot(double fTimeDiff)
 	{};
 

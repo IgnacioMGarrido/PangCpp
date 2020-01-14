@@ -6,12 +6,20 @@
 cRenderComp::cRenderComp(const char *sFileName, const vec2 &vSize) : m_Sprite(sFileName, vSize)
 {
 	// Registering renderable object in Graphics Engine.
-	cGraphicsEngine::GetInstance().InsertRenderObj(m_Sprite);
 }
 
 cRenderComp::~cRenderComp()
 {
 	// Derregistering renderable object in Graphics Engine.
+}
+
+void cRenderComp::Activate()
+{
+	cGraphicsEngine::GetInstance().InsertRenderObj(m_Sprite);
+}
+
+void cRenderComp::Deactivate()
+{
 	cGraphicsEngine::GetInstance().DeleteRenderObj(m_Sprite);
 }
 

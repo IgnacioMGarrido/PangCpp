@@ -25,15 +25,13 @@ void cEntity::Deactivate()
 void cEntity::Slot(double fTimeDiff)
 {
 	for (auto compIt = m_Components.begin(); compIt != m_Components.end(); ++compIt) {
-		if((*compIt)->GetIsActive())
-		    (*compIt)->Slot(fTimeDiff);
+        (*compIt)->Slot(fTimeDiff);
 	}
 }
 
 void cEntity::SendMsg(const cMessage &message) const
 {
 	for (auto compIt = m_Components.begin(); compIt != m_Components.end(); ++compIt) {
-		if ((*compIt)->GetIsActive())
-		    (*compIt)->ReceiveMsg(message);
+        (*compIt)->ReceiveMsg(message);
 	}
 }
