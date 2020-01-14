@@ -6,12 +6,14 @@
 class cComponent;
 class cMessage;
 
+enum class EntityType { PLAYER, BALL, BULLET, EMPTY };
 class cEntity {
 private:
+	EntityType m_EType;
 	std::vector<cComponent*>	m_Components;	// Component list.
 	bool m_bIsActive;
 public:
-	cEntity() : m_bIsActive(false)
+	cEntity() : m_bIsActive(false), m_EType(EntityType::EMPTY)
 	{}
 	virtual ~cEntity();
 
@@ -47,6 +49,9 @@ public:
 	}
 
 	inline bool GetIsActive() const { return m_bIsActive; }
+
+	inline EntityType GetEntityType() { return m_EType; }
+	inline void SetEntityType(EntityType _myType) { m_EType = _myType; }
 };
 
 #endif // !_ENTITY_H_

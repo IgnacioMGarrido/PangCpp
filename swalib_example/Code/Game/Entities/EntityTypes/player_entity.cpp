@@ -11,6 +11,9 @@
 cEPlayer::cEPlayer(const char* cSpritePath, float fRadius)
     : m_fMaxPlayerVel(8.0 * 60.0f)
 {
+	//Set Entity Type
+	SetEntityType(EntityType::PLAYER);
+
 	// Insert movement component.
 	cLinearVelComp* pVelComp = new cLinearVelComp();
 	assert(pVelComp != nullptr);

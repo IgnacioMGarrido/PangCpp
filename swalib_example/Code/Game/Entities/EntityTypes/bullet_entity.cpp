@@ -8,6 +8,8 @@ cEBullet::cEBullet(const char* cSpritePath, float fRadius)
     :m_fMaxBulletVel(8.0f * 60.0f)
 
 {
+    //Set Entity Type
+    SetEntityType(EntityType::BULLET);
 
     // Insert movement component.
     cLinearVelComp* pVelComp = new cLinearVelComp();

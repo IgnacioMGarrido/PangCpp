@@ -10,7 +10,8 @@
 cEBall::cEBall(const char* cSpritePath, float fRadius)
     :m_fMaxBallVel(8.0f * 60.0f)
 {
-
+    //Set Entity Type
+    SetEntityType(EntityType::BALL);
     // Insert movement component.
     cLinearVelComp* pVelComp = new cLinearVelComp();
     assert(pVelComp != nullptr);
