@@ -5,7 +5,8 @@
 #include "../Components/input_comp.h"
 #include "../Components/render_comp.h"
 #include "../Components/collision_comp.h"
-#include "../Components/linear_vel_comp.h"
+//#include "../Components/linear_vel_comp.h"
+#include "../Components/horizontal_movement_comp.h"
 #include <assert.h>
 
 cEPlayer::cEPlayer(const char* cSpritePath, float fRadius)
@@ -15,11 +16,11 @@ cEPlayer::cEPlayer(const char* cSpritePath, float fRadius)
 	SetEntityType(EntityType::PLAYER);
 
 	// Insert movement component.
-	cLinearVelComp* pVelComp = new cLinearVelComp();
+	cHorizontalMovementComp* pVelComp = new cHorizontalMovementComp();
 	assert(pVelComp != nullptr);
 	pVelComp->SetPos(vmake(SCR_WIDTH / 2, 50));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
 	pVelComp->SetInitialVel(vmake(m_fMaxPlayerVel, 0));
-	AddComponent<cLinearVelComp&>(*pVelComp);
+	AddComponent<cHorizontalMovementComp&>(*pVelComp);
 
 	// Insert collision component.
 	cCollisionComp* pCollComp = new cCollisionComp(fRadius * 3.0f);

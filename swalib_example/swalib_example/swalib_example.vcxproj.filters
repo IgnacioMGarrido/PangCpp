@@ -98,6 +98,9 @@
     <ClCompile Include="..\Code\Game\Entities\EntityTypes\bullet_entity.cpp">
       <Filter>Source Files\Game\Entities\EntityTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\Components\horizontal_movement_comp.cpp">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -177,6 +180,9 @@
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\bullet_entity.h">
       <Filter>Source Files\Game\Entities\EntityTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Components\horizontal_movement_comp.h">
+      <Filter>Source Files\Game\Entities\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

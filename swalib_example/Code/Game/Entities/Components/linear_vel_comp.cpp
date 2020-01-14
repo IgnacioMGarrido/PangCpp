@@ -8,8 +8,9 @@
 #include "../Messages/dir_change_msg.h"
 #include "../Messages/shoot_msg.h"
 
-cLinearVelComp::cLinearVelComp() : m_vPos(vmake(0, 0))
-, m_vVel(vmake(0, 0))
+cLinearVelComp::cLinearVelComp()
+    : m_vPos(vmake(0, 0))
+    , m_vVel(vmake(0, 0))
 {}
 
 void cLinearVelComp::Slot(double fTimeDiff)

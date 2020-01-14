@@ -11,6 +11,7 @@
 #include <windows.h>
 #include <assert.h>
 #include "../../../../../common/sys.h"
+#include "horizontal_movement_comp.h"
 
 void cInputComp::Slot(double fTimeDiff)
 {
@@ -24,11 +25,6 @@ void cInputComp::Slot(double fTimeDiff)
         cDirChangeMessage msg(1);
         GetOwner()->SendMsg(msg);
     }
-    else
-    {
-        cDirChangeMessage msg(0);
-        GetOwner()->SendMsg(msg);
-    }
 
     if(SYS_KeyPressed(VK_SPACE))
     {
@@ -39,7 +35,7 @@ void cInputComp::Slot(double fTimeDiff)
         //cWorld::GetInstance().GetEntities().push_back(pEnt);
         //pEnt->FindComponent<cLinearVelComp>()->SetPos(GetOwner()->FindComponent<cLinearVelComp>()->GetPos());
         //pEnt->Activate();
-       for (cEntity* bullet : cWorld::GetInstance().GetEntities())
+   /*    for (cEntity* bullet : cWorld::GetInstance().GetEntities())
         {
             cEBullet* myBullet = dynamic_cast<cEBullet*>(bullet);
             if (myBullet != nullptr)
@@ -47,12 +43,12 @@ void cInputComp::Slot(double fTimeDiff)
                 if (myBullet->GetIsActive() == false) {
                     cLinearVelComp* myBulletComp = myBullet->FindComponent<cLinearVelComp>();
                     assert(myBulletComp != nullptr);
-                    myBulletComp->SetPos(GetOwner()->FindComponent<cLinearVelComp>()->GetPos());
+                    myBulletComp->SetPos(GetOwner()->FindComponent<cHorizontalMovementComp>()->GetPos());
                     myBullet->Activate();
                     return;
                 }
             }
-        } 
+        } */
     }
 
 }
