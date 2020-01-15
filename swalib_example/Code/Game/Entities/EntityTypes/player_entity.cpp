@@ -8,6 +8,7 @@
 //#include "../Components/linear_vel_comp.h"
 #include "../Components/horizontal_movement_comp.h"
 #include <assert.h>
+#include "../Components/shooting_component.h"
 
 cEPlayer::cEPlayer(const char* cSpritePath, float fRadius)
     : m_fMaxPlayerVel(8.0 * 60.0f)
@@ -39,4 +40,8 @@ cEPlayer::cEPlayer(const char* cSpritePath, float fRadius)
 	cLifeComp* pLifeComp = new cLifeComp();
 	assert(pLifeComp != nullptr);
 	AddComponent<cLifeComp&>(*pLifeComp);
+
+	cShootingComp* pShootComp = new cShootingComp();
+	assert(pShootComp != nullptr);
+	AddComponent<cShootingComp&>(*pShootComp);
 }

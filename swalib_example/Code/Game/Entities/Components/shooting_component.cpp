@@ -1,7 +1,11 @@
+#include "../../../../../common/stdafx.h"
 #include "shooting_component.h"
 #include "../../Managers/world.h"
-
+#include "linear_vel_comp.h"
+#include "horizontal_movement_comp.h"
 #include "../Messages/shoot_msg.h"
+#include "../EntityTypes/bullet_entity.h"
+#include <assert.h>
 
 void cShootingComp::Slot(double fTimeDiff)
 {
@@ -37,7 +41,7 @@ void cShootingComp::Shoot()
             if (myBullet->GetIsActive() == false) {
                 cLinearVelComp* myBulletComp = myBullet->FindComponent<cLinearVelComp>();
                 assert(myBulletComp != nullptr);
-                myBulletComp->SetPos(GetOwner()->FindComponent<cHorizontalMovementComp>()->GetPos());
+                myBulletComp->SetPos(vadd(GetOwner()->FindComponent<cHorizontalMovementComp>()->GetPos(), vmake(0,80)));
                 myBullet->Activate();
                 return;
             }
