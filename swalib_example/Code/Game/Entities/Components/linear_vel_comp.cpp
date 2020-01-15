@@ -42,12 +42,7 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
 
                 switch (pEntColl->GetEntityType())
                 {
-                    IDynamicMovementComp* pMovCompCollEnt;
                     cDamageTakenMessage *msg;
-                    vec2 vPosCollEnt;
-                    vec2 vNewVel;
-                    float fLenVec;
-                    float fVel;
                     case EntityType::PLAYER:
                         //send message to the Player that damage has been taken
                         //TODO: Move this to the component implemented by the Player Entity.
