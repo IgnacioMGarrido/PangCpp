@@ -40,14 +40,14 @@ void cWorld::Init()
 
 	// Init game state
 	// Add balls
-	//for (size_t i = 0; i < m_bMaxBalls; i++) {
-	//	cEntity *pEnt = new cEBall("data/ball128.png",16.0f);
-	//	assert(pEnt != nullptr);
-	//	// Insert entity.
-	//	m_Entities.push_back(pEnt);
-	//	// Activation.
-	//	pEnt->Activate();
-	//}
+	for (size_t i = 0; i < m_uMaxBalls; i++) {
+		cEntity *pEnt = new cEBall("data/ball128.png",16.0f);
+		assert(pEnt != nullptr);
+		// Insert entity.
+		m_Entities.push_back(pEnt);
+		// Activation.
+		pEnt->Activate();
+	}
 	//Add Player.
 	for(size_t i = 0; i < m_uMaxPlayers; ++i)
 	{
