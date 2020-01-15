@@ -23,7 +23,7 @@ cWorld& cWorld::GetInstance()
 	return world;
 }
 
-cWorld::cWorld() : m_Entities(m_bMaxBalls)
+cWorld::cWorld() : m_Entities(m_uMaxBalls)
 	, m_Timer(1.0f / 60.0f)
 	, m_pBackground(nullptr)
 {
@@ -49,7 +49,7 @@ void cWorld::Init()
 	//	pEnt->Activate();
 	//}
 	//Add Player.
-	for(size_t i = 0; i < m_bMaxPlayers; ++i)
+	for(size_t i = 0; i < m_uMaxPlayers; ++i)
 	{
 		cEntity* pEnt = new cEPlayer("data/pang_player.png",16.0f);
 		assert(pEnt != nullptr);
@@ -57,8 +57,8 @@ void cWorld::Init()
 		m_Entities.push_back(pEnt);
 		pEnt->Activate();
 	}
-
-	for (size_t i = 0; i < m_bMaxBullets; ++i)
+    //Add Bullets
+	for (size_t i = 0; i < m_uMaxBullets; ++i)
 	{
 		cEntity* pEnt = new cEBullet("data/tyrian_ball.png", 8.0f);
 		assert(pEnt != nullptr);
