@@ -153,6 +153,7 @@
     <ClInclude Include="..\Code\Game\Entities\Components\component.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\horizontal_movement_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\input_comp.h" />
+    <ClInclude Include="..\Code\Game\Entities\Components\Interfazes\dynamic_movement.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\life_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\linear_vel_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\render_comp.h" />

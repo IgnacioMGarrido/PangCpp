@@ -67,6 +67,5 @@ void cCollisionComp::ReceiveMsg(const cMessage &message)
 	const cNewPosMsg *pMsg = dynamic_cast<const cNewPosMsg *>(&message);
 	if (pMsg != nullptr) {
 		m_vPos = pMsg->GetPos();
-
 	}
 }

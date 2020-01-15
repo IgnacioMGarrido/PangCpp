@@ -3,10 +3,11 @@
 
 #include "../../../../../common/core.h"
 #include "component.h"
+#include "Interfazes/dynamic_movement.h"
 
 // Velocity component.
 // Update new position using linear velocity.
-class cHorizontalMovementComp : public cComponent
+class cHorizontalMovementComp : public cComponent, public IDynamicMovementComp
 {
 private:
 	vec2	m_vPos;	// Position. Coord. window.
@@ -21,7 +22,7 @@ public:
 	cHorizontalMovementComp();
 
 	virtual void Slot(double fTimeDiff) override;
-	inline const vec2& GetPos() const { return m_vPos; }
+	inline virtual const vec2& GetPos() const override{ return m_vPos; }
 	inline void SetPos(const vec2& vPos) { m_vPos = vPos; }
 	inline const vec2& GetVel() const { return m_vVel; }
 	inline void SetVel(const vec2& vVel) { m_vVel = vVel; }

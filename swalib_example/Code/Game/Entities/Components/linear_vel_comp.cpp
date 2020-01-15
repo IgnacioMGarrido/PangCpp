@@ -42,8 +42,7 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
 
                 switch (pEntColl->GetEntityType())
                 {
-                    cHorizontalMovementComp* pHorizontalMovementCompCollEnt;
-                    cLinearVelComp* pMovCompCollEnt;
+                    IDynamicMovementComp* pMovCompCollEnt;
                     cDamageTakenMessage *msg;
                     vec2 vPosCollEnt;
                     vec2 vNewVel;
@@ -54,36 +53,10 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                         //TODO: Move this to the component implemented by the Player Entity.
                         msg = new cDamageTakenMessage(1);
                         pEntColl->SendMsg(*msg);
-                        delete msg;
-                        pHorizontalMovementCompCollEnt = pEntColl->FindComponent<cHorizontalMovementComp>();
-                        assert(pHorizontalMovementCompCollEnt != nullptr);
-                        vPosCollEnt = pHorizontalMovementCompCollEnt->GetPos();
-                        vNewVel = vsub(m_vPos, vPosCollEnt);
-                        fLenVec = vlen(vNewVel);
-                        if (fLenVec <= 0.0f) {	// Same position. Maintain vel.
-                            return;
-                        }
-                        vNewVel = vscale(vNewVel, 1.0f / fLenVec);	// Normalization.
-                        fVel = vlen(m_vVel);
-                        SetVel(vscale(vNewVel, fVel));
-                        
+                        Rebound(pEntColl);
                     break;
                     case EntityType::BALL:
-
-
-                        pMovCompCollEnt = pEntColl->FindComponent<cLinearVelComp>();
-                        assert(pMovCompCollEnt != nullptr);
-                        // Transfer the velocity vector from collided ball.
-                        vPosCollEnt = pMovCompCollEnt->GetPos();
-                        vNewVel = vsub(m_vPos, vPosCollEnt);
-                        fLenVec = vlen(vNewVel);
-                        if (fLenVec <= 0.0f) {	// Same position. Maintain vel.
-                            return;
-                        }
-                        vNewVel = vscale(vNewVel, 1.0f / fLenVec);	// Normalization.
-                        fVel = vlen(m_vVel);
-                        SetVel(vscale(vNewVel, fVel));
-
+                        Rebound(pEntColl);
                         break;
                     case EntityType::BULLET:
                         GetOwner()->Deactivate();
@@ -93,32 +66,14 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
             case EntityType::BULLET:
                 switch (pEntColl->GetEntityType()) {
                 case EntityType::BALL:
-
+                    //TODO: Fix collision with bullets
+                    //GetOwner()->Deactivate();
                 default: ;
                 }
                 break;
 
             }
         }
-        //if(pEntColl->GetEntityType() == EntityType::BALL || pEntColl->GetEntityType() == EntityType::BULLET)
-        //{
-        //    cLinearVelComp* pMovCompCollEnt = pEntColl->FindComponent<cLinearVelComp>();
-        //    assert(pMovCompCollEnt != nullptr);
-        //    // Transfer the velocity vector from collided ball.
-        //    vec2 vPosCollEnt = pMovCompCollEnt->GetPos();
-        //    vec2 vNewVel = vsub(m_vPos, vPosCollEnt);
-        //    float fLenVec = vlen(vNewVel);
-        //    if (fLenVec <= 0.0f) {	// Same position. Maintain vel.
-        //        return;
-        //    }
-        //    vNewVel = vscale(vNewVel, 1.0f / fLenVec);	// Normalization.
-        //    float fVel = vlen(m_vVel);
-        //    SetVel(vscale(vNewVel, fVel));
-        //    return;
-        //}
-
-
-        
     }
 
 
@@ -148,4 +103,25 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
     }
 
 
+}
+
+void cLinearVelComp::Rebound(const cEntity* pEntColl)
+{
+    cDamageTakenMessage* msg;
+
+    IDynamicMovementComp* pMovCompCollEnt = pEntColl->FindComponent<cLinearVelComp>();
+    if (pMovCompCollEnt == nullptr)
+        pMovCompCollEnt = pEntColl->FindComponent<cHorizontalMovementComp>();
+    assert(pMovCompCollEnt != nullptr);
+
+    // Transfer the velocity vector from collided ball.
+    vec2 vPosCollEnt = pMovCompCollEnt->GetPos();
+    vec2 vNewVel = vsub(m_vPos, vPosCollEnt);
+    float fLenVec = vlen(vNewVel);
+    if (fLenVec <= 0.0f) {	// Same position. Maintain vel.
+        return;
+    }
+    vNewVel = vscale(vNewVel, 1.0f / fLenVec);	// Normalization.
+    float fVel = vlen(m_vVel);
+    SetVel(vscale(vNewVel, fVel));
 }
