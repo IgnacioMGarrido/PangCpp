@@ -190,5 +190,8 @@
     <ClInclude Include="..\Code\Game\Entities\Components\shooting_component.h">
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Messages\damage_taken.h">
+      <Filter>Source Files\Game\Entities\Messages</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

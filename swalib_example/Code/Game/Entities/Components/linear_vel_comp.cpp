@@ -5,6 +5,8 @@
 #include <assert.h>
 #include "../Messages/new_pos_msg.h"
 #include "../Messages/collision_msg.h"
+#include "../Messages/damage_taken.h"
+#include "horizontal_movement_comp.h"
 
 cLinearVelComp::cLinearVelComp()
     : m_vPos(vmake(0, 0))
@@ -41,14 +43,29 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
 
                 switch (pEntColl->GetEntityType())
                 {
-                        vec2 vPosCollEnt;
-                        vec2 vNewVel;
-                        float fLenVec;
-                        float fVel;
-                        cLinearVelComp* pMovCompCollEnt;
-
-                    case EntityType::PLAYER: break;
+                    cHorizontalMovementComp* pHorizontalMovementCompCollEnt;
+                    cLinearVelComp* pMovCompCollEnt;
+                    vec2 vPosCollEnt;
+                    vec2 vNewVel;
+                    float fLenVec;
+                    float fVel;
+                    case EntityType::PLAYER:
+                        pHorizontalMovementCompCollEnt = pEntColl->FindComponent<cHorizontalMovementComp>();
+                        assert(pHorizontalMovementCompCollEnt != nullptr);
+                        vPosCollEnt = pHorizontalMovementCompCollEnt->GetPos();
+                        vNewVel = vsub(m_vPos, vPosCollEnt);
+                        fLenVec = vlen(vNewVel);
+                        if (fLenVec <= 0.0f) {	// Same position. Maintain vel.
+                            return;
+                        }
+                        vNewVel = vscale(vNewVel, 1.0f / fLenVec);	// Normalization.
+                        fVel = vlen(m_vVel);
+                        SetVel(vscale(vNewVel, fVel));
+                        
+                    break;
                     case EntityType::BALL:
+
+
                         pMovCompCollEnt = pEntColl->FindComponent<cLinearVelComp>();
                         assert(pMovCompCollEnt != nullptr);
                         // Transfer the velocity vector from collided ball.
@@ -73,8 +90,6 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                 switch (pEntColl->GetEntityType()) {
                 case EntityType::PLAYER: break;
                 case EntityType::BALL:
-                    GetOwner()->Deactivate();
-                    break;
                 case EntityType::BULLET: break;
                 case EntityType::EMPTY: break;
                 default: ;

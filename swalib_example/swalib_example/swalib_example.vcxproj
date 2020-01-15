@@ -162,6 +162,7 @@
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\bullet_entity.h" />
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\player_entity.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\collision_msg.h" />
+    <ClInclude Include="..\Code\Game\Entities\Messages\damage_taken.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\dir_change_msg.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\message.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\new_pos_msg.h" />

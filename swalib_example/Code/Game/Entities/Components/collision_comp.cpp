@@ -38,6 +38,7 @@ void cCollisionComp::Slot(double fTimeDiff)
 		// Rebound!
 		cEntCollisionMsg msg(*pCollEnt);
 		pOwnEnt->SendMsg(msg);
+
 	}
 
 	// Rebound on margins
@@ -66,6 +67,6 @@ void cCollisionComp::ReceiveMsg(const cMessage &message)
 	const cNewPosMsg *pMsg = dynamic_cast<const cNewPosMsg *>(&message);
 	if (pMsg != nullptr) {
 		m_vPos = pMsg->GetPos();
-		return;
+
 	}
 }

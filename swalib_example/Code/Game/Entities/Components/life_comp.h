@@ -13,7 +13,7 @@ public:
     virtual void Slot(double fTimeDiff) override {};
     inline int& GetLifes() { return m_iNumLifes; }
     inline void SetLifes(int iNumLifes) { m_iNumLifes = iNumLifes; }
-    //virtual void ReceiveMsg(const cMessage& message) override;
+    virtual void ReceiveMsg(const cMessage& message) override;
 
 };
 
