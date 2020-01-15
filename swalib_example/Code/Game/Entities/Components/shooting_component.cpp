@@ -9,7 +9,7 @@
 
 void cShootingComp::Slot(double fTimeDiff)
 {
-    if (m_fNextFire >= m_fShootingRate) 
+    if (m_fNextFire >= m_fFireRate) 
     {
         m_bCanShoot = true;
     }
