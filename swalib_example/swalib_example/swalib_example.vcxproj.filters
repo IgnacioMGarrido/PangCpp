@@ -36,6 +36,9 @@
     <Filter Include="Source Files\Game\Entities\EntityTypes">
       <UniqueIdentifier>{deb5f966-49f4-4a96-8657-8b50b557122a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Entities\Components\Interfazes">
+      <UniqueIdentifier>{859e837c-6c50-4d90-a999-9ff2aa407a3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -189,6 +192,12 @@
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\Components\shooting_component.h">
       <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Messages\damage_taken.h">
+      <Filter>Source Files\Game\Entities\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Components\Interfazes\dynamic_movement.h">
+      <Filter>Source Files\Game\Entities\Components\Interfazes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

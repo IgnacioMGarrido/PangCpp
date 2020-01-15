@@ -50,7 +50,7 @@ public:
 
 	inline bool GetIsActive() const { return m_bIsActive; }
 
-	inline EntityType GetEntityType() { return m_EType; }
+	inline EntityType GetEntityType() const{ return m_EType; }
 	inline void SetEntityType(EntityType _myType) { m_EType = _myType; }
 };
 
