@@ -101,6 +101,9 @@
     <ClCompile Include="..\Code\Game\Entities\Components\horizontal_movement_comp.cpp">
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\Components\shooting_component.cpp">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -182,6 +185,9 @@
       <Filter>Source Files\Game\Entities\EntityTypes</Filter>
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\Components\horizontal_movement_comp.h">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Components\shooting_component.h">
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClInclude>
   </ItemGroup>
