@@ -38,18 +38,23 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
         {
             switch (GetOwner()->GetEntityType())
             {
-            case EntityType::PLAYER: break;
             case EntityType::BALL:
 
                 switch (pEntColl->GetEntityType())
                 {
                     cHorizontalMovementComp* pHorizontalMovementCompCollEnt;
                     cLinearVelComp* pMovCompCollEnt;
+                    cDamageTakenMessage *msg;
                     vec2 vPosCollEnt;
                     vec2 vNewVel;
                     float fLenVec;
                     float fVel;
                     case EntityType::PLAYER:
+                        //send message to the Player that damage has been taken
+                        //TODO: Move this to the component implemented by the Player Entity.
+                        msg = new cDamageTakenMessage(1);
+                        pEntColl->SendMsg(*msg);
+                        delete msg;
                         pHorizontalMovementCompCollEnt = pEntColl->FindComponent<cHorizontalMovementComp>();
                         assert(pHorizontalMovementCompCollEnt != nullptr);
                         vPosCollEnt = pHorizontalMovementCompCollEnt->GetPos();
@@ -78,7 +83,6 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                         vNewVel = vscale(vNewVel, 1.0f / fLenVec);	// Normalization.
                         fVel = vlen(m_vVel);
                         SetVel(vscale(vNewVel, fVel));
-                        //return;
 
                         break;
                     case EntityType::BULLET:
@@ -88,10 +92,8 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                 break;
             case EntityType::BULLET:
                 switch (pEntColl->GetEntityType()) {
-                case EntityType::PLAYER: break;
                 case EntityType::BALL:
-                case EntityType::BULLET: break;
-                case EntityType::EMPTY: break;
+
                 default: ;
                 }
                 break;
