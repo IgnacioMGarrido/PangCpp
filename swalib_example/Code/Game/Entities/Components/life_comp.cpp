@@ -11,19 +11,19 @@ void cLifeComp::Slot(double fTimeDiff)
 {
     if (m_iInvulnerableTime >= m_iInvulnerableRate)
     {
-        m_bIsInvulnerable = false;
+        m_bIsVulnerable = false;
     }
     else
     {
         m_iInvulnerableTime += fTimeDiff;
-        m_bIsInvulnerable = true;
+        m_bIsVulnerable = true;
     }
 }
 
 void cLifeComp::ReceiveMsg(const cMessage& message)
 {
     const cDamageTakenMessage* pDamageTakenMsg = dynamic_cast<const cDamageTakenMessage*>(&message);
-    if(pDamageTakenMsg != nullptr && m_bIsInvulnerable == false)
+    if(pDamageTakenMsg != nullptr && m_bIsVulnerable == false)
     {
         m_iInvulnerableTime = 0;
         SetLifes(GetLifes() - pDamageTakenMsg->GetDamageTaken());
