@@ -18,7 +18,8 @@ void cBallSpawnerComp::ReceiveMsg(const cMessage& message)
         const cEBall* pOwnerBall = dynamic_cast<const cEBall*>(GetOwner());
         for (cEntity* ball : cWorld::GetInstance().GetEntities())
         {
-            if(cont < 3 && ball->GetEntityType() == EntityType::BALL && ball->GetIsActive() == false && pOwnerBall->GetIsOriginBall() == true && ball->GetHasAlreadyBeenSpawned() == false)
+            if(cont < 3 && ball->GetEntityType() == EntityType::BALL && ball->GetIsActive() == false && pOwnerBall->GetIsOriginBall() == true 
+                && ball->GetHasAlreadyBeenSpawned() == false)
             {
                 if(cont == 0)
                 {
