@@ -7,6 +7,7 @@
 #include "render_comp.h"
 #include "linear_vel_comp.h"
 #include "../EntityTypes/ball_entity.h"
+#include "collision_comp.h"
 
 void cBallSpawnerComp::ReceiveMsg(const cMessage& message)
 {
@@ -26,18 +27,23 @@ void cBallSpawnerComp::ReceiveMsg(const cMessage& message)
                     ball->Activate();
                     ball->FindComponent<cRenderComp>()->SetScale(vscale(GetOwner()->FindComponent<cRenderComp>()->GetScale(), .5f).x);
                     ball->FindComponent<cLinearVelComp>()->SetPos(vadd(GetOwner()->FindComponent<cLinearVelComp>()->GetPos(), vmake(20, 0)));
+                    ball->FindComponent<cCollisionComp>()->SetCollisionRadius(ball->FindComponent<cCollisionComp>()->GetRadius() / 2);
                 }
                 else if(cont == 1)
                 {
                     ball->Activate();
                     ball->FindComponent<cRenderComp>()->SetScale(vscale(GetOwner()->FindComponent<cRenderComp>()->GetScale(), .5f).x);
                     ball->FindComponent<cLinearVelComp>()->SetPos(vadd(GetOwner()->FindComponent<cLinearVelComp>()->GetPos(), vmake(0, 0)));
+                    ball->FindComponent<cCollisionComp>()->SetCollisionRadius(ball->FindComponent<cCollisionComp>()->GetRadius() / 2);
+
                 }
                 else if(cont == 2)
                 {
                     ball->Activate();
                     ball->FindComponent<cRenderComp>()->SetScale(vscale(GetOwner()->FindComponent<cRenderComp>()->GetScale(), .5f).x);
                     ball->FindComponent<cLinearVelComp>()->SetPos(vadd(GetOwner()->FindComponent<cLinearVelComp>()->GetPos(), vmake(-20, 0)));
+                    ball->FindComponent<cCollisionComp>()->SetCollisionRadius(ball->FindComponent<cCollisionComp>()->GetRadius() / 2);
+
                 }
                 cont++;
 

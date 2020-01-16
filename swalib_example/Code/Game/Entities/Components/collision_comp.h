@@ -21,6 +21,8 @@ public:
 	inline const vec2 &GetPos() const { return m_vPos; }
 	virtual void ReceiveMsg(const cMessage &message) override;
 
+	inline void SetCollisionRadius(float _fCollisionRadius) { m_fRadius = _fCollisionRadius;}
+
 };
 
 #endif // _COLLISION_COMP_H_
