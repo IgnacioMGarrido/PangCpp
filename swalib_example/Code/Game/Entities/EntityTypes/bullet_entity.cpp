@@ -4,6 +4,9 @@
 #include "../Components/collision_comp.h"
 #include "../Components/linear_vel_comp.h"
 #include <assert.h>
+#include "../Components/deactivation_component.h"
+
+
 cEBullet::cEBullet(const char* cSpritePath, float fRadius)
     :m_fMaxBulletVel(8.0f * 60.0f)
 
@@ -27,4 +30,8 @@ cEBullet::cEBullet(const char* cSpritePath, float fRadius)
     cRenderComp* pRenderComp = new cRenderComp(cSpritePath, vmake(fRadius * 6.0f, fRadius * 6.0f));
     assert(pRenderComp != nullptr);
     AddComponent<cRenderComp&>(*pRenderComp);
+
+    cDeactivationComponent* pDeactivationComp = new cDeactivationComponent();
+    assert(pDeactivationComp != nullptr);
+    AddComponent<cDeactivationComponent&>(*pDeactivationComp);
 }

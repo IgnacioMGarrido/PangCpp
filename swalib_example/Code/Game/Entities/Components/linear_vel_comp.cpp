@@ -57,6 +57,8 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                         break;
                     case EntityType::BULLET:
                         cSpawnBallMessage msgBallSpawn(true);
+                        cDamageTakenMessage msgDamage(1);
+                        pEntColl->SendMsg(msgDamage);
                         GetOwner()->SendMsg(msgBallSpawn);
                         GetOwner()->Deactivate();
                         if (cWorld::GetInstance().CheckAllBallsActive() == false)
