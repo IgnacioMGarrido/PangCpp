@@ -6,12 +6,22 @@
 cRenderComp::cRenderComp(const char *sFileName, const vec2 &vSize) : m_Sprite(sFileName, vSize)
 {
 	// Registering renderable object in Graphics Engine.
-	cGraphicsEngine::GetInstance().InsertRenderObj(m_Sprite);
 }
 
 cRenderComp::~cRenderComp()
 {
 	// Derregistering renderable object in Graphics Engine.
+}
+
+void cRenderComp::Activate()
+{
+	m_bIsActive = true;
+	cGraphicsEngine::GetInstance().InsertRenderObj(m_Sprite);
+}
+
+void cRenderComp::Deactivate()
+{
+	m_bIsActive = false;
 	cGraphicsEngine::GetInstance().DeleteRenderObj(m_Sprite);
 }
 
@@ -21,6 +31,5 @@ void cRenderComp::ReceiveMsg(const cMessage &message)
 	const cNewPosMsg *pMsg = dynamic_cast<const cNewPosMsg *>(&message);
 	if (pMsg != nullptr) {
 		m_Sprite.SetPos(pMsg->GetPos());
-		return;
 	}
 }

@@ -6,14 +6,18 @@
 class cComponent;
 class cMessage;
 
+enum class EntityType { PLAYER, BALL, BULLET, HUD ,EMPTY };
 class cEntity {
 private:
+	EntityType m_EType;
 	std::vector<cComponent*>	m_Components;	// Component list.
+	bool m_bIsActive;
+	bool m_bHasAlreadySpawned;
 
 public:
-	cEntity()
+	cEntity() : m_bIsActive(false), m_EType(EntityType::EMPTY), m_bHasAlreadySpawned(false)
 	{}
-	~cEntity();
+	virtual ~cEntity();
 
 	// Entity activation when it's running first time.
 	void Activate();
@@ -45,6 +49,13 @@ public:
 		}
 		return nullptr;
 	}
+
+	inline bool GetIsActive() const { return m_bIsActive; }
+
+	inline bool GetHasAlreadyBeenSpawned() const { return m_bHasAlreadySpawned; }
+
+	inline EntityType GetEntityType() const{ return m_EType; }
+	inline void SetEntityType(EntityType _myType) { m_EType = _myType; }
 };
 
 #endif // !_ENTITY_H_

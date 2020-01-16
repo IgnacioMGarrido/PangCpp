@@ -11,9 +11,12 @@ class cWorld
 {
 public:
 	typedef std::vector<cEntity *>	tEntities;	// Typedef array of entities.
+	cEntity* pHUD;
 
 private:
-	static const size_t m_bMaxEntities = 10;	// Max. num balls.
+	static const size_t m_uMaxBalls = 8;	// Max. num balls.
+	static const size_t m_uMaxPlayers = 1;
+	static const size_t m_uMaxBullets = 4;
 
 	tEntities m_Entities;	// Vector of entities.
 	cBackground	*m_pBackground;	// Backgroung game.
@@ -31,10 +34,14 @@ public:
 	void Terminate();
 	void Slot();
 
+	void CheckGameState(bool _bGameState);
+	bool CheckAllBallsActive();
+	cEntity* GetHud() const { return pHUD; };
 private:
 	cWorld();
 
-	void EntitySlot(double fTimeDiff);
+    void EntitySlot(double fTimeDiff);
+
 };
 
 #endif // !_WORLD_H_

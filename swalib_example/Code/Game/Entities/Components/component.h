@@ -9,7 +9,6 @@ class cComponent
 {
 private:
 	cEntity* m_pOwner;	// Entity.
-
 public:
 	cComponent() : m_pOwner(nullptr)
 	{}
@@ -17,17 +16,16 @@ public:
 	inline cEntity *GetOwner() const { return m_pOwner; }
 
 	// Component activation when it's running first time.
-	virtual void Activate()
-	{}
+	virtual void Activate() { };
 	// Component deactivation before is deleted.
-	virtual void Deactivate()
-	{}
+	virtual void Deactivate() {};
 	// Process slot.
 	virtual void Slot(double fTimeDiff) = 0;
 
 	// Receive from another component.
 	virtual void ReceiveMsg(const cMessage& message)
 	{};
+
 };
 
 #endif // !_COMPONENT_H_
