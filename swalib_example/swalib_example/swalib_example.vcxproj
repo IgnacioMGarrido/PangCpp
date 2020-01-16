@@ -136,6 +136,7 @@
     <ClCompile Include="..\Code\Game\Entities\entity.cpp" />
     <ClCompile Include="..\Code\Game\Entities\EntityTypes\ball_entity.cpp" />
     <ClCompile Include="..\Code\Game\Entities\EntityTypes\bullet_entity.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\EntityTypes\HUD_entity.cpp" />
     <ClCompile Include="..\Code\Game\Entities\EntityTypes\player_entity.cpp" />
     <ClCompile Include="..\Code\Game\Global\timer.cpp" />
     <ClCompile Include="..\Code\Game\Graphics\background.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="..\Code\Game\Entities\entity.h" />
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\ball_entity.h" />
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\bullet_entity.h" />
+    <ClInclude Include="..\Code\Game\Entities\EntityTypes\HUD_entity.h" />
     <ClInclude Include="..\Code\Game\Entities\EntityTypes\player_entity.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\collision_msg.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\damage_taken.h" />

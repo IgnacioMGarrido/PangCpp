@@ -11,6 +11,7 @@ class cWorld
 {
 public:
 	typedef std::vector<cEntity *>	tEntities;	// Typedef array of entities.
+	cEntity* pHUD;
 
 private:
 	static const size_t m_uMaxBalls = 3;	// Max. num balls.
@@ -33,10 +34,14 @@ public:
 	void Terminate();
 	void Slot();
 
+	void CheckGameState(bool _bGameState);
+	bool CheckAllBallsActive();
+	cEntity* GetHud() const { return pHUD; };
 private:
 	cWorld();
 
     void EntitySlot(double fTimeDiff);
+
 };
 
 #endif // !_WORLD_H_

@@ -6,7 +6,7 @@
 class cComponent;
 class cMessage;
 
-enum class EntityType { PLAYER, BALL, BULLET, EMPTY };
+enum class EntityType { PLAYER, BALL, BULLET, HUD ,EMPTY };
 class cEntity {
 private:
 	EntityType m_EType;

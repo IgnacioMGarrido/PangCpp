@@ -1,20 +1,16 @@
 #include "../../../../common/stdafx.h"
 #include "world.h"
 #include "../../../../common/core.h"
-#include "../../../../common/sys.h"
 #include "../../../../common/font.h"
 #include "../Entities/EntityTypes/player_entity.h"
 #include "../Entities/EntityTypes/ball_entity.h"
 #include "../Entities/Entity.h"
-#include "../Entities/Components/linear_vel_comp.h"
-#include "../Entities/Components/collision_comp.h"
 #include "../Entities/Components/render_comp.h"
 #include "../Graphics/background.h"
 #include "graphics_engine.h"
 #include <assert.h>
-#include "../Entities/Components/input_comp.h"
-#include "../Entities/Components/life_comp.h"
 #include "../Entities/EntityTypes/bullet_entity.h"
+#include "../Entities/EntityTypes/HUD_entity.h"
 
 
 cWorld& cWorld::GetInstance()
@@ -33,12 +29,25 @@ cWorld::cWorld() : m_Entities(m_uMaxBalls)
 void cWorld::Init()
 {
 	// Background creation.
-	m_pBackground = new cBackground("data/circle-bkg-128.png", vmake(128.f, 128.f));
+	m_pBackground = new cBackground("data/background.png", vmake(500, 367));
 	assert(m_pBackground != nullptr);
 	// Registering renderable object in Graphics Engine.
 	cGraphicsEngine::GetInstance().InsertRenderObj(*m_pBackground);
 
+	
 	// Init game state
+	pHUD = new cEHud("data/heart.png", "data/GameOverText.png","data/WinText.png", 10);
+	
+	assert(pHUD != nullptr);
+	m_Entities.push_back(pHUD);
+	pHUD->Activate();
+
+	cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
+	assert(pWorldHud != nullptr);
+	pWorldHud->GetGameOverComponent()->Deactivate();
+	pWorldHud->GetWinComponent()->Deactivate();
+
+
 	// Add balls
 	for (size_t i = 0; i < m_uMaxBalls; i++) {
 		cEntity *pEnt = new cEBall("data/ball128.png",16.0f);
@@ -66,6 +75,8 @@ void cWorld::Init()
 		m_Entities.push_back(pEnt);
 		pEnt->Deactivate();
 	}
+
+
 }
 
 void cWorld::Terminate()
@@ -90,6 +101,35 @@ void cWorld::Slot()
 		// Call to world logic.
 		EntitySlot(m_Timer.GetFixedTick());
 	}
+}
+
+void cWorld::CheckGameState(bool _bGameState)
+{
+	if (_bGameState == false)
+	{
+		cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
+		assert(pWorldHud != nullptr);
+		pWorldHud->GetGameOverComponent()->Activate();
+	}
+	else
+	{
+		cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
+		assert(pWorldHud != nullptr);
+		pWorldHud->GetWinComponent()->Activate();
+	}
+}
+
+bool cWorld::CheckAllBallsActive()
+{
+	for (cEntity* pEntity : GetInstance().GetEntities())
+	{
+		if (pEntity->GetEntityType() == EntityType::BALL)
+		{
+			if (pEntity->GetIsActive() == true)
+				return true;
+		}
+	}
+	return false;
 }
 
 void cWorld::EntitySlot(double fTimeDiff)

@@ -15,7 +15,7 @@
 
 void cInputComp::Slot(double fTimeDiff)
 {
-    if (SYS_KeyPressed('A'))//GetAsyncKeyState('A') & 0x8000)
+    if (SYS_KeyPressed('A'))
     {
         cDirChangeMessage msg(-1);
         GetOwner()->SendMsg(msg);
