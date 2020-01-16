@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\Components\ball_spawner_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\collision_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\horizontal_movement_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\input_comp.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
+    <ClInclude Include="..\Code\Game\Entities\Components\ball_spawner_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\collision_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\component.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\horizontal_movement_comp.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="..\Code\Game\Entities\Messages\message.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\new_pos_msg.h" />
     <ClInclude Include="..\Code\Game\Entities\Messages\shoot_msg.h" />
+    <ClInclude Include="..\Code\Game\Entities\Messages\spawn_Ball_msg.h" />
     <ClInclude Include="..\Code\Game\Global\timer.h" />
     <ClInclude Include="..\Code\Game\Graphics\background.h" />
     <ClInclude Include="..\Code\Game\Graphics\render_object.h" />

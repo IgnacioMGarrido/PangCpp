@@ -12,8 +12,10 @@ private:
 	EntityType m_EType;
 	std::vector<cComponent*>	m_Components;	// Component list.
 	bool m_bIsActive;
+	bool m_bHasAlreadySpawned;
+
 public:
-	cEntity() : m_bIsActive(false), m_EType(EntityType::EMPTY)
+	cEntity() : m_bIsActive(false), m_EType(EntityType::EMPTY), m_bHasAlreadySpawned(false)
 	{}
 	virtual ~cEntity();
 
@@ -49,6 +51,8 @@ public:
 	}
 
 	inline bool GetIsActive() const { return m_bIsActive; }
+
+	inline bool GetHasAlreadyBeenSpawned() const { return m_bHasAlreadySpawned; }
 
 	inline EntityType GetEntityType() const{ return m_EType; }
 	inline void SetEntityType(EntityType _myType) { m_EType = _myType; }

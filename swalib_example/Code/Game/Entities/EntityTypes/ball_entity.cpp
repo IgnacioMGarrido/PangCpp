@@ -5,10 +5,12 @@
 #include "../Components/collision_comp.h"
 #include "../Components/linear_vel_comp.h"
 #include <assert.h>
+#include "../Components/ball_spawner_comp.h"
 
 
 cEBall::cEBall(const char* cSpritePath, float fRadius)
     :m_fMaxBallVel(8.0f * 60.0f)
+    , m_bIsOriginBall(false)
 {
     //Set Entity Type
     SetEntityType(EntityType::BALL);
@@ -28,4 +30,8 @@ cEBall::cEBall(const char* cSpritePath, float fRadius)
     cRenderComp* pRenderComp = new cRenderComp(cSpritePath, vmake(fRadius * 6.0f, fRadius * 6.0f));
     assert(pRenderComp != nullptr);
     AddComponent<cRenderComp&>(*pRenderComp);
+
+    cBallSpawnerComp* pBallSpawnerComp = new cBallSpawnerComp(3);
+    assert(pBallSpawnerComp);
+    AddComponent<cBallSpawnerComp&>(*pBallSpawnerComp);
 }
