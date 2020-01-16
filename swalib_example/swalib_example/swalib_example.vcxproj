@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\common\sys_win.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\ball_spawner_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\collision_comp.cpp" />
+    <ClCompile Include="..\Code\Game\Entities\Components\deactivation_component.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\horizontal_movement_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\input_comp.cpp" />
     <ClCompile Include="..\Code\Game\Entities\Components\life_comp.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="..\Code\Game\Entities\Components\ball_spawner_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\collision_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\component.h" />
+    <ClInclude Include="..\Code\Game\Entities\Components\deactivation_component.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\horizontal_movement_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\input_comp.h" />
     <ClInclude Include="..\Code\Game\Entities\Components\Interfazes\dynamic_movement.h" />

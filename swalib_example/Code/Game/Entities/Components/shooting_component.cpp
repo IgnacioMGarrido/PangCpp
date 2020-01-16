@@ -6,6 +6,7 @@
 #include "../Messages/shoot_msg.h"
 #include "../EntityTypes/bullet_entity.h"
 #include <assert.h>
+#include "../Messages/damage_taken.h"
 
 void cShootingComp::Slot(double fTimeDiff)
 {
