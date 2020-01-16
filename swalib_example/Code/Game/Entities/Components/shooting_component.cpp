@@ -35,14 +35,14 @@ void cShootingComp::Shoot()
     m_fNextFire = 0;//reset the NextFire variable
     for (cEntity* bullet : cWorld::GetInstance().GetEntities())
     {
-        cEBullet* myBullet = dynamic_cast<cEBullet*>(bullet);
-        if (myBullet != nullptr)
+        //cEBullet* myBullet = dynamic_cast<cEBullet*>(bullet);
+        if (bullet->GetEntityType() == EntityType::BULLET)
         {
-            if (myBullet->GetIsActive() == false) {
-                cLinearVelComp* myBulletComp = myBullet->FindComponent<cLinearVelComp>();
+            if (bullet->GetIsActive() == false) {
+                cLinearVelComp* myBulletComp = bullet->FindComponent<cLinearVelComp>();
                 assert(myBulletComp != nullptr);
                 myBulletComp->SetPos(vadd(GetOwner()->FindComponent<cHorizontalMovementComp>()->GetPos(), vmake(0,80)));
-                myBullet->Activate();
+                bullet->Activate();
                 return;
             }
         }

@@ -31,24 +31,6 @@ void cInputComp::Slot(double fTimeDiff)
         cShootMessage msg(true);
         GetOwner()->SendMsg(msg);
 
-        //cEntity* pEnt = new cEBullet("data/tyrian_ball.png", 8.0f);
-        //cWorld::GetInstance().GetEntities().push_back(pEnt);
-        //pEnt->FindComponent<cLinearVelComp>()->SetPos(GetOwner()->FindComponent<cLinearVelComp>()->GetPos());
-        //pEnt->Activate();
-   /*    for (cEntity* bullet : cWorld::GetInstance().GetEntities())
-        {
-            cEBullet* myBullet = dynamic_cast<cEBullet*>(bullet);
-            if (myBullet != nullptr)
-            {
-                if (myBullet->GetIsActive() == false) {
-                    cLinearVelComp* myBulletComp = myBullet->FindComponent<cLinearVelComp>();
-                    assert(myBulletComp != nullptr);
-                    myBulletComp->SetPos(GetOwner()->FindComponent<cHorizontalMovementComp>()->GetPos());
-                    myBullet->Activate();
-                    return;
-                }
-            }
-        } */
     }
 
 }

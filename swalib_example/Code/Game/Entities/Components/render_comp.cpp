@@ -29,6 +29,5 @@ void cRenderComp::ReceiveMsg(const cMessage &message)
 	const cNewPosMsg *pMsg = dynamic_cast<const cNewPosMsg *>(&message);
 	if (pMsg != nullptr) {
 		m_Sprite.SetPos(pMsg->GetPos());
-		return;
 	}
 }
