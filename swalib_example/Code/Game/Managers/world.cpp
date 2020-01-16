@@ -29,7 +29,7 @@ cWorld::cWorld() : m_Entities(m_uMaxBalls)
 void cWorld::Init()
 {
 	// Background creation.
-	m_pBackground = new cBackground("data/circle-bkg-128.png", vmake(128.f, 128.f));
+	m_pBackground = new cBackground("data/background.png", vmake(500, 367));
 	assert(m_pBackground != nullptr);
 	// Registering renderable object in Graphics Engine.
 	cGraphicsEngine::GetInstance().InsertRenderObj(*m_pBackground);

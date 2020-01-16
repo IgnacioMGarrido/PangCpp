@@ -31,11 +31,9 @@ cEHud::cEHud(const char* cHeartSpritePath, const char* cGameOverSpritePath, cons
     assert(m_pWinRenderComp != nullptr);
     AddComponent<cRenderComp&>(*m_pWinRenderComp);
     m_pWinRenderComp->SetSpritePosition(vmake(SCR_WIDTH/2, SCR_HEIGHT/2));
-    m_pWinRenderComp->Deactivate();
 
     m_pGameOverRenderComp = new cRenderComp(cGameOverSpritePath, vmake(fRadius * 40.0f, fRadius * 40.0f));
     assert(m_pGameOverRenderComp != nullptr);
     AddComponent<cRenderComp&>(*m_pGameOverRenderComp);
     m_pGameOverRenderComp->SetSpritePosition(vmake(SCR_WIDTH/2, SCR_HEIGHT/2));
-    m_pGameOverRenderComp->Deactivate();
 }
