@@ -15,11 +15,13 @@ cRenderComp::~cRenderComp()
 
 void cRenderComp::Activate()
 {
+	m_bIsActive = true;
 	cGraphicsEngine::GetInstance().InsertRenderObj(m_Sprite);
 }
 
 void cRenderComp::Deactivate()
 {
+	m_bIsActive = false;
 	cGraphicsEngine::GetInstance().DeleteRenderObj(m_Sprite);
 }
 

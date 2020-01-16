@@ -9,6 +9,7 @@
 #include "graphics_engine.h"
 #include <assert.h>
 #include "../Entities/EntityTypes/bullet_entity.h"
+#include "../Entities/EntityTypes/HUD_entity.h"
 
 
 cWorld& cWorld::GetInstance()
@@ -32,7 +33,12 @@ void cWorld::Init()
 	// Registering renderable object in Graphics Engine.
 	cGraphicsEngine::GetInstance().InsertRenderObj(*m_pBackground);
 
+	
 	// Init game state
+	pHUD = new cEHud("data/heart.png", 10);
+	assert(pHUD != nullptr);
+	m_Entities.push_back(pHUD);
+	pHUD->Activate();
 	// Add balls
 	for (size_t i = 0; i < m_uMaxBalls; i++) {
 		cEntity *pEnt = new cEBall("data/ball128.png",16.0f);
@@ -60,6 +66,8 @@ void cWorld::Init()
 		m_Entities.push_back(pEnt);
 		pEnt->Deactivate();
 	}
+
+
 }
 
 void cWorld::Terminate()
@@ -90,11 +98,11 @@ void cWorld::CheckGameState(bool _bGameState)
 {
 	if (_bGameState == false)
 	{
-		FONT_DrawString(vmake(20, 40), "Game Over");
+		FONT_DrawString(vmake(1280, 720), "Game Over");
 	}
 	else
 	{
-		FONT_DrawString(vmake(200, 400), "You Win!");
+		FONT_DrawString(vmake(0, 0), "YOU WIN!");
 	}
 }
 
