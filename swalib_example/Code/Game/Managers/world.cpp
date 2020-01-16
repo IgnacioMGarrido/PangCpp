@@ -5,6 +5,7 @@
 #include "../Entities/EntityTypes/player_entity.h"
 #include "../Entities/EntityTypes/ball_entity.h"
 #include "../Entities/Entity.h"
+#include "../Entities/Components/render_comp.h"
 #include "../Graphics/background.h"
 #include "graphics_engine.h"
 #include <assert.h>
@@ -35,10 +36,18 @@ void cWorld::Init()
 
 	
 	// Init game state
-	pHUD = new cEHud("data/heart.png", 10);
+	pHUD = new cEHud("data/heart.png", "data/GameOverText.png","data/WinText.png", 10);
+	
 	assert(pHUD != nullptr);
 	m_Entities.push_back(pHUD);
 	pHUD->Activate();
+
+	cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
+	assert(pWorldHud != nullptr);
+	pWorldHud->GetGameOverComponent()->Deactivate();
+	pWorldHud->GetWinComponent()->Deactivate();
+
+
 	// Add balls
 	for (size_t i = 0; i < m_uMaxBalls; i++) {
 		cEntity *pEnt = new cEBall("data/ball128.png",16.0f);
@@ -98,11 +107,15 @@ void cWorld::CheckGameState(bool _bGameState)
 {
 	if (_bGameState == false)
 	{
-		FONT_DrawString(vmake(1280, 720), "Game Over");
+		cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
+		assert(pWorldHud != nullptr);
+		pWorldHud->GetGameOverComponent()->Activate();
 	}
 	else
 	{
-		FONT_DrawString(vmake(0, 0), "YOU WIN!");
+		cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
+		assert(pWorldHud != nullptr);
+		pWorldHud->GetWinComponent()->Activate();
 	}
 }
 

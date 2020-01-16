@@ -13,11 +13,11 @@ void cLifeComp::ReceiveMsg(const cMessage& message)
     if(pDamageTakenMsg != nullptr)
     {
         SetLifes(GetLifes() - pDamageTakenMsg->GetDamageTaken());
+
         cEHud* pWorldHud = dynamic_cast<cEHud*>( cWorld::GetInstance().GetHud());
         assert(pWorldHud != nullptr);
         for (cRenderComp* renderComp : pWorldHud->GetHeartRenderComps())
         {
-
             if (renderComp->GetIsActive()) {
                 renderComp->Deactivate();
                 break;
