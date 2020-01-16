@@ -17,7 +17,7 @@ cEBall::cEBall(const char* cSpritePath, float fRadius)
     // Insert movement component.
     cLinearVelComp* pVelComp = new cLinearVelComp();
     assert(pVelComp != nullptr);
-    pVelComp->SetPos(vmake(SCR_WIDTH / 2, SCR_HEIGHT));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
+    pVelComp->SetPos(vmake(CORE_FRand(-200, +200) + SCR_WIDTH / 2, SCR_HEIGHT-100));//CORE_FRand(0.0f, SCR_WIDTH), CORE_FRand(0.0f, SCR_HEIGHT)));
     pVelComp->SetVel(vmake(CORE_FRand(-m_fMaxBallVel, +m_fMaxBallVel), CORE_FRand(-m_fMaxBallVel, +m_fMaxBallVel)));
     AddComponent<cLinearVelComp&>(*pVelComp);
 

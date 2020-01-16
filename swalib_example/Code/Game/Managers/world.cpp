@@ -55,7 +55,7 @@ void cWorld::Init()
 		// Insert entity.
 		m_Entities.push_back(pEnt);
 		// Activation.
-		if(i < 2)
+		if(i < 3)
 		{
 			cEBall* pBall = dynamic_cast<cEBall*>(pEnt);
 			assert(pBall != nullptr);
