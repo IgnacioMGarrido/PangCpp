@@ -9,6 +9,7 @@ cEntity::~cEntity()
 void cEntity::Activate()
 {
 	m_bIsActive = true;
+	m_bHasAlreadySpawned = true;
 	for (auto compIt = m_Components.begin(); compIt != m_Components.end(); ++compIt) {
 		(*compIt)->Activate();
 	}

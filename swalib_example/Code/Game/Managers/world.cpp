@@ -55,7 +55,14 @@ void cWorld::Init()
 		// Insert entity.
 		m_Entities.push_back(pEnt);
 		// Activation.
-		pEnt->Activate();
+		if(i < 2)
+		{
+			cEBall* pBall = dynamic_cast<cEBall*>(pEnt);
+			assert(pBall != nullptr);
+			pBall->Activate();
+			pBall->SetIsOriginBall(true);
+		}
+
 	}
 	//Add Player.
 	for(size_t i = 0; i < m_uMaxPlayers; ++i)

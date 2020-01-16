@@ -27,6 +27,10 @@ public:
 	inline const vec2& GetSpritePosition() { return m_Sprite.GetPos(); }
 
 	inline const bool& GetIsActive() { return m_bIsActive; }
+
+	inline void SetScale(float _fScale) { m_Sprite.SetSize(vmake(_fScale, _fScale)); }
+
+	inline const vec2& GetScale() { return m_Sprite.GetSize(); };
 };
 
 #endif // !_RENDER_COMP_H_

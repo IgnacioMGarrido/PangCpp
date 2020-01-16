@@ -22,6 +22,7 @@ public:
 	inline void SetPos(const vec2 &vPos) { m_vPos = vPos; };
 	inline const vec2& GetPos() { return m_vPos; }
 	inline void SetSize(const vec2 &vSize) { m_vSize = vSize; }
+	inline const vec2& GetSize() { return m_vSize; }
 
 	// Render method.
 	void Render() override;

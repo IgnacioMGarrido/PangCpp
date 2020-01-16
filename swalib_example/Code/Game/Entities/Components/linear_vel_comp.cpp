@@ -8,6 +8,7 @@
 #include "../Messages/collision_msg.h"
 #include "../Messages/damage_taken.h"
 #include "horizontal_movement_comp.h"
+#include "../Messages/spawn_Ball_msg.h"
 
 cLinearVelComp::cLinearVelComp()
     : m_vPos(vmake(0, 0))
@@ -55,6 +56,8 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                         Rebound(pEntColl);
                         break;
                     case EntityType::BULLET:
+                        cSpawnBallMessage msgBallSpawn(true);
+                        GetOwner()->SendMsg(msgBallSpawn);
                         GetOwner()->Deactivate();
                         if (cWorld::GetInstance().CheckAllBallsActive() == false)
                             cWorld::GetInstance().CheckGameState(true);

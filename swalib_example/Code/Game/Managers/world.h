@@ -14,7 +14,7 @@ public:
 	cEntity* pHUD;
 
 private:
-	static const size_t m_uMaxBalls = 3;	// Max. num balls.
+	static const size_t m_uMaxBalls = 8;	// Max. num balls.
 	static const size_t m_uMaxPlayers = 1;
 	static const size_t m_uMaxBullets = 4;
 
