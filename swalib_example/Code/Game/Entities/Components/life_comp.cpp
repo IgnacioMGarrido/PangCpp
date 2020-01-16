@@ -7,11 +7,25 @@
 #include "../Messages/damage_taken.h"
 #include <assert.h>
 
+void cLifeComp::Slot(double fTimeDiff)
+{
+    if (m_iInvulnerableTime >= m_iInvulnerableRate)
+    {
+        m_bIsInvulnerable = false;
+    }
+    else
+    {
+        m_iInvulnerableTime += fTimeDiff;
+        m_bIsInvulnerable = true;
+    }
+}
+
 void cLifeComp::ReceiveMsg(const cMessage& message)
 {
     const cDamageTakenMessage* pDamageTakenMsg = dynamic_cast<const cDamageTakenMessage*>(&message);
-    if(pDamageTakenMsg != nullptr)
+    if(pDamageTakenMsg != nullptr && m_bIsInvulnerable == false)
     {
+        m_iInvulnerableTime = 0;
         SetLifes(GetLifes() - pDamageTakenMsg->GetDamageTaken());
 
         cEHud* pWorldHud = dynamic_cast<cEHud*>( cWorld::GetInstance().GetHud());
