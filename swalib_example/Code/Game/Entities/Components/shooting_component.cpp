@@ -25,7 +25,7 @@ void cShootingComp::ReceiveMsg(const cMessage& message)
     const cShootMessage* pShootMsg = dynamic_cast<const cShootMessage*>(&message);
     if (pShootMsg != nullptr) 
     {
-        if (m_bCanShoot)
+        if (m_bCanShoot && GetOwner()->GetIsActive())
             Shoot();
     }
 }

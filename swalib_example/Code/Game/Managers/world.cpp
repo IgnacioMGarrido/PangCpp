@@ -110,12 +110,26 @@ void cWorld::CheckGameState(bool _bGameState)
 		cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
 		assert(pWorldHud != nullptr);
 		pWorldHud->GetGameOverComponent()->Activate();
+        for (cEntity* pEntity : GetEntities())
+        {
+            if(pEntity != pWorldHud)
+            {
+				pEntity->Deactivate();
+            }
+        }
 	}
 	else
 	{
 		cEHud* pWorldHud = dynamic_cast<cEHud*>(pHUD);
 		assert(pWorldHud != nullptr);
 		pWorldHud->GetWinComponent()->Activate();
+		for (cEntity* pEntity : GetEntities())
+		{
+			if (pEntity != pWorldHud)
+			{
+				pEntity->Deactivate();
+			}
+		}
 	}
 }
 
