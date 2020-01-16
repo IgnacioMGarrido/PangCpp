@@ -1,5 +1,8 @@
+#include "../../../../../common/stdafx.h"
 #include "life_comp.h"
+#include "../../Managers/world.h"
 #include "../entity.h"
+
 #include "../Messages/damage_taken.h"
 
 void cLifeComp::ReceiveMsg(const cMessage& message)
@@ -12,6 +15,7 @@ void cLifeComp::ReceiveMsg(const cMessage& message)
         {
             //TODO: GameOver message
             GetOwner()->Deactivate();
+            cWorld::GetInstance().CheckGameState(false);
         }
     }
 }

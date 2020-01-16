@@ -33,10 +33,13 @@ public:
 	void Terminate();
 	void Slot();
 
+	void CheckGameState(bool _bGameState);
+	bool CheckAllBallsActive();
 private:
 	cWorld();
 
     void EntitySlot(double fTimeDiff);
+
 };
 
 #endif // !_WORLD_H_

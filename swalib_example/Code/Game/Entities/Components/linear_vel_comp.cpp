@@ -1,5 +1,6 @@
 #include "../../../../../common/stdafx.h"
 #include "linear_vel_comp.h"
+#include "../../Managers/world.h"
 #include "render_comp.h"
 #include "../entity.h"
 #include <assert.h>
@@ -55,6 +56,8 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                         break;
                     case EntityType::BULLET:
                         GetOwner()->Deactivate();
+                        if (cWorld::GetInstance().CheckAllBallsActive() == false)
+                            cWorld::GetInstance().CheckGameState(true);
                         break;
                     }
                 break;

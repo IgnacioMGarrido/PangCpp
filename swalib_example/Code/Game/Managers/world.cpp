@@ -1,19 +1,13 @@
 #include "../../../../common/stdafx.h"
 #include "world.h"
 #include "../../../../common/core.h"
-#include "../../../../common/sys.h"
 #include "../../../../common/font.h"
 #include "../Entities/EntityTypes/player_entity.h"
 #include "../Entities/EntityTypes/ball_entity.h"
 #include "../Entities/Entity.h"
-#include "../Entities/Components/linear_vel_comp.h"
-#include "../Entities/Components/collision_comp.h"
-#include "../Entities/Components/render_comp.h"
 #include "../Graphics/background.h"
 #include "graphics_engine.h"
 #include <assert.h>
-#include "../Entities/Components/input_comp.h"
-#include "../Entities/Components/life_comp.h"
 #include "../Entities/EntityTypes/bullet_entity.h"
 
 
@@ -90,6 +84,31 @@ void cWorld::Slot()
 		// Call to world logic.
 		EntitySlot(m_Timer.GetFixedTick());
 	}
+}
+
+void cWorld::CheckGameState(bool _bGameState)
+{
+	if (_bGameState == false)
+	{
+		FONT_DrawString(vmake(20, 40), "Game Over");
+	}
+	else
+	{
+		FONT_DrawString(vmake(200, 400), "You Win!");
+	}
+}
+
+bool cWorld::CheckAllBallsActive()
+{
+	for (cEntity* pEntity : GetInstance().GetEntities())
+	{
+		if (pEntity->GetEntityType() == EntityType::BALL)
+		{
+			if (pEntity->GetIsActive() == true)
+				return true;
+		}
+	}
+	return false;
 }
 
 void cWorld::EntitySlot(double fTimeDiff)
