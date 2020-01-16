@@ -113,6 +113,9 @@
     <ClCompile Include="..\Code\Game\Entities\Components\ball_spawner_comp.cpp">
       <Filter>Source Files\Game\Entities\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Code\Game\Entities\Components\deactivation_component.cpp">
+      <Filter>Source Files\Game\Entities\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -213,6 +216,9 @@
     </ClInclude>
     <ClInclude Include="..\Code\Game\Entities\Messages\spawn_Ball_msg.h">
       <Filter>Source Files\Game\Entities\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Game\Entities\Components\deactivation_component.h">
+      <Filter>Source Files\Game\Entities\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
