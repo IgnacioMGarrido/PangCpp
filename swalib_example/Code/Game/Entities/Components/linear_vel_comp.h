@@ -14,8 +14,6 @@ private:
 	vec2	m_vVel;	// Velocity.
 	vec2	m_vInitialVel;
 
-	bool bCanMoveRight = true;
-	bool bCanMoveLeft = true;
 
 public:
 	cLinearVelComp();

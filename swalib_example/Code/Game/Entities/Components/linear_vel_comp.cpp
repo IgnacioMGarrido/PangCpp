@@ -13,6 +13,7 @@
 cLinearVelComp::cLinearVelComp()
     : m_vPos(vmake(0, 0))
     , m_vVel(vmake(0, 0))
+    , m_vInitialVel(vmake(0,0))
 {}
 
 void cLinearVelComp::Slot(double fTimeDiff)

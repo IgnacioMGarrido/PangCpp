@@ -10,6 +10,9 @@ cHorizontalMovementComp::cHorizontalMovementComp()
     : m_vPos(vmake(0, 0))
     , m_vVel(vmake(0, 0))
     , m_iDirection(0)
+    , m_vInitialVel(vmake(0,0))
+    , bCanMoveRight(true)
+    , bCanMoveLeft(true)
 {
 }
 

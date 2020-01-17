@@ -6,11 +6,12 @@
 class cShootingComp : public cComponent
 {
 private:
-    bool m_bCanShoot = false;
-    float m_fFireRate = 0.5f;
-    float m_fNextFire = 0.0f;
+    bool m_bCanShoot;
+    float m_fNextFire;
+    float m_fFireRate;
+
 public:
-    cShootingComp()
+    cShootingComp() : m_bCanShoot(false) , m_fNextFire(0.0f), m_fFireRate(0.5f)
     {}
     ~cShootingComp()
     {}

@@ -9,7 +9,7 @@ class cRenderComp : public cComponent
 {
 private:
 	cSprite	m_Sprite;	// Sprite associated.
-	bool m_bIsActive = true;
+	bool m_bIsActive;
 public:
 	cRenderComp(const char *sFileName, const vec2 &vSize);
 	~cRenderComp();

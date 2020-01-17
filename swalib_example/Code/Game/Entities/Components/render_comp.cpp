@@ -3,7 +3,9 @@
 #include "../../Managers/graphics_engine.h"
 #include "../Messages/new_pos_msg.h"
 
-cRenderComp::cRenderComp(const char *sFileName, const vec2 &vSize) : m_Sprite(sFileName, vSize)
+cRenderComp::cRenderComp(const char *sFileName, const vec2 &vSize)
+    :  m_Sprite(sFileName, vSize)
+    , m_bIsActive(true)
 {
 	// Registering renderable object in Graphics Engine.
 }

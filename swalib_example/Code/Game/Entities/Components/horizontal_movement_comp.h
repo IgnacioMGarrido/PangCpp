@@ -15,8 +15,8 @@ private:
 	int		m_iDirection;
 	vec2	m_vInitialVel;
 
-	bool bCanMoveRight = true;
-	bool bCanMoveLeft = true;
+	bool bCanMoveRight;
+	bool bCanMoveLeft;
 
 public:
 	cHorizontalMovementComp();
