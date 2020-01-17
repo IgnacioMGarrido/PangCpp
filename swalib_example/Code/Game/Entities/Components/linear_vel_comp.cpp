@@ -48,7 +48,6 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                     cDamageTakenMessage *msg;
                     case EntityType::PLAYER:
                         //send message to the Player that damage has been taken
-                        //TODO: Move this to the component implemented by the Player Entity.
                         msg = new cDamageTakenMessage(1);
                         pEntColl->SendMsg(*msg);
                         Rebound(pEntColl);
@@ -67,14 +66,9 @@ void cLinearVelComp::ReceiveMsg(const cMessage& message)
                         break;
                     }
                 break;
-            case EntityType::BULLET:
-                switch (pEntColl->GetEntityType()) {
-                case EntityType::BALL:
-                    //TODO: Fix collision with bullets
-                    //GetOwner()->Deactivate();
-                default: ;
-                }
-                break;
+                //Si hago que cada entidad maneje su propia colision entonces segun como procese la logica unas veces destruye una y otras veces otra.
+                //Esta es la unica solucion que he encontrado sin tener que modificar mucho el codigo proporcionado.
+
 
             }
         }
